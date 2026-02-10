@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>For Saanvi 💘</title>
+
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      background: linear-gradient(135deg, #ffd6e8, #ffeef5);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: 'Comic Sans MS', 'Poppins', sans-serif;
+      overflow: hidden;
+    }
+
+    img {
+ width: 220px;
+  border-radius: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    }
+
+
+    .card {
+      background: white;
+      padding: 24px;
+      border-radius: 20px;
+      text-align: center;
+      width: 90%;
+      max-width: 360px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+    }
+
+    h1 {
+      color: #ff4d88;
+      margin-bottom: 10px;
+    }
+
+    p {
+      color: #555;
+      margin-bottom: 20px;
+    }
+
+    img {
+      width: 220px;
+      border-radius: 16px;
+      margin-bottom: 20px;
+    }
+
+    .buttons {
+      position: relative;
+      height: 120px;
+    }
+
+    button {
+      border: none;
+      padding: 12px 24px;
+      font-size: 18px;
+      border-radius: 999px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      position: absolute;
+    }
+
+    #yesBtn {
+      background: #ff4d88;
+      color: white;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    #noBtn {
+      background: #eee;
+      color: #333;
+      top: 60px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .hearts {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    .heart {
+      position: absolute;
+      color: #ff4d88;
+      font-size: 24px;
+      animation: floatUp 4s linear infinite;
+    }
+
+    @keyframes floatUp {
+      from {
+        transform: translateY(100vh) scale(1);
+        opacity: 1;
+      }
+      to {
+        transform: translateY(-10vh) scale(1.5);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="card" id="card">
+    <h1 id="title">Saanvi 🥺💘</h1>
+    <p id="text">
+      Will you be my Valentine, my piku / chikki / chulbul / panduranga?
+    </p>
+
+    <img
+      id="gif"
+      src="https://files.catbox.moe/p98slr.jpg"
+      alt="puppy eyes"
+    />
+
+    <div class="buttons">
+      <button id="yesBtn">Yes 💖</button>
+      <button id="noBtn">No 😢</button>
+    </div>
+  </div>
+
+  <div class="hearts" id="hearts"></div>
+
+  <script>
+    const music = document.getElementById("music");
+
+    const noBtn = document.getElementById("noBtn");
+    const yesBtn = document.getElementById("yesBtn");
+    const gif = document.getElementById("gif");
+    const text = document.getElementById("text");
+    const title = document.getElementById("title");
+    const heartsContainer = document.getElementById("hearts");
+
+    const noTexts = [
+      "Wait—no—come back 😭",
+      "Wrong answer :((((",
+      "HAWWW PNKTTT💔🥺",
+      "nahi nahi theek hai YOU EVEN CONSIDERED SAYING NO?!! 🥺"
+    ];
+
+    let noCount = 0;
+
+    function moveNoButton() {
+      const x = Math.random() * 60 + 10;
+      const y = Math.random() * 60 + 20;
+      noBtn.style.left = x + "%";
+      noBtn.style.top = y + "%";
+
+      text.textContent = noTexts[Math.min(noCount, noTexts.length - 1)];
+      noCount++;
+    }
+
+    noBtn.addEventListener("mouseover", moveNoButton);
+    noBtn.addEventListener("touchstart", moveNoButton);
+
+    yesBtn.addEventListener("click", () => {
+      title.textContent = "YAYYYYY 💕🥳";
+      text.textContent =
+        "I knew it 😭 <3. I love you more, BABY PIKU. Best Valentine everrr mwah bbg :).";
+
+       gif.src =
+        "https://media.giphy.com/media/3oriO0OEd9QIDdllqo/giphy.gif";
+
+      noBtn.style.display = "none";
+      yesBtn.style.display = "none";
+
+      music.play();
+
+      createHearts();
+    });
+
+    function createHearts () {
+     setInterval(() => {
+        const heart = document.createElement("div");
+        heart.className = "heart";
+        heart.textContent = "💖";
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.animationDuration = Math.random() * 2 + 3 + "s";
+        heartsContainer.appendChild(heart);
+
+        setTimeout(() => {
+          heart.remove();
+        }, 5000);
+      }, 300);
+    }
+  </script>
+  <audio id="music" loop>
+  <source src="https://files.catbox.moe/z17g44.mp3" type="audio/mpeg">
+ </audio>
+
+
+ </body>
+</html>
